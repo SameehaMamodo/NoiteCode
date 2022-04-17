@@ -23,6 +23,8 @@
         <activity android:name=".MedicationPage"/>
         <activity android:name=".ExercisePage"/>
         <activity android:name=".ReminderPage"/>
+        <activity android:name=".ViewNotifsPage"/>
+
     </application>
 
 </manifest>

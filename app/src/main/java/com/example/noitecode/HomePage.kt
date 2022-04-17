@@ -36,9 +36,9 @@ class HomePage : AppCompatActivity() {
         startActivity(intent)
     }
 
-//    fun ViewReminder(view: View) {
-//
-//        val intentr = Intent(this, ViewRemindersPage::class.java)
-//        startActivity(intentr)
-//    }
+    fun ViewReminder(view: View) {
+
+        val intentr = Intent(this, ViewNotifsPage::class.java)
+        startActivity(intentr)
+    }
 }
