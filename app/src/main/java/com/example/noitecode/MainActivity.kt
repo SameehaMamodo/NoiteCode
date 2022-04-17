@@ -32,13 +32,13 @@ class MainActivity : AppCompatActivity() {
 
 
         if (dbHelper.login(username, password)) {
-            Toast.makeText(this, "Successfully logged in", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show()
             startActivity(Intent(this, HomePage::class.java))
             val tUser= TempUser(username, 0)
             dbHelper.AddTemporaryUser(tUser)
 
         } else {
-            Toast.makeText(this, "Unsuccessful login", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Login Unsuccessful", Toast.LENGTH_SHORT).show()
         }
 
     }

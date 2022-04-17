@@ -4,7 +4,6 @@ import android.database.Cursor
 import android.database.SQLException
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import android.database.sqlite.SQLiteTableLockedException
 import com.example.noitecode.model.*
 
 
@@ -178,11 +177,5 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
     }
 
 
-//    fun getAllDetails(): ArrayList<Medicine>{
-//        val db: SQLiteDatabase = this.readableDatabase
-//        val cv: ContentValues = ContentValues()
-//        val sqlStatement = "SELECT * FROM $MedicineTableName WHERE $User_ID == "
-//
-//    }
 
 }

@@ -21,15 +21,15 @@ class SignUpPage : AppCompatActivity() {
             val password = findViewById<EditText>(R.id.textViewaddP).text.toString()
             val dbHelper = DatabaseHelper(this)
 
-            val naming = username
+            val name = username
             val pass = password
-            val userpass = User(naming, pass)
+            val usernameP = User(name, pass)
 
-            if (dbHelper.ifNameExists(naming)) {
-                Toast.makeText(this, "User already exists", Toast.LENGTH_SHORT).show()
+            if (dbHelper.ifNameExists(name)) {
+                Toast.makeText(this, "User already exists", Toast.LENGTH_LONG).show()
             } else {
-                dbHelper.addUserPass(userpass)
-                Toast.makeText(this, "User added", Toast.LENGTH_SHORT).show()
+                dbHelper.addUserPass(usernameP)
+                Toast.makeText(this, "User added", Toast.LENGTH_LONG).show()
             }
         }
 
