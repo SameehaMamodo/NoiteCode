@@ -9,7 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import com.example.devlogin.model.Reminder
+import com.example.noitecode.model.Reminder
 
 
 class HomePage : AppCompatActivity() {

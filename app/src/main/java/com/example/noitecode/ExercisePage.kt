@@ -7,7 +7,7 @@ import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.devlogin.model.Exercise
+import com.example.noitecode.model.Exercise
 
 class ExercisePage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

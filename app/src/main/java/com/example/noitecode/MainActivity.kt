@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
-import com.example.devlogin.model.TempUser
+import com.example.noitecode.model.TempUser
 
 
 class MainActivity : AppCompatActivity() {

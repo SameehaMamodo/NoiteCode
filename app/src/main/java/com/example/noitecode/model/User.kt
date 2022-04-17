@@ -1,4 +1,4 @@
-package com.example.devlogin.model
+package com.example.noitecode.model
 
 data class User(val Username: String, val Password: String){
 

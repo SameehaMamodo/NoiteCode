@@ -5,7 +5,7 @@ import android.database.SQLException
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.database.sqlite.SQLiteTableLockedException
-import com.example.devlogin.model.*
+import com.example.noitecode.model.*
 
 
 /* Database Config*/

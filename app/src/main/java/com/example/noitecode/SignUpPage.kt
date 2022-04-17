@@ -6,7 +6,7 @@ import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.devlogin.model.User
+import com.example.noitecode.model.User
 
 class SignUpPage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
