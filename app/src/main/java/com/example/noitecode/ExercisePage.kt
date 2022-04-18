@@ -10,12 +10,21 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.noitecode.model.Exercise
 
 class ExercisePage : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_exercisepage)
+
+      //  findViewById<EditText>(R.id.editTxtETime)
     }
 
     fun saveExercise(view: View) {
+
+        val extras: Bundle? = intent.extras
+        if (extras != null) {
+
+            val username = getIntent().getStringExtra("username2")
+
 
             val dbHelper = DatabaseHelper(this)
 
@@ -26,11 +35,11 @@ class ExercisePage : AppCompatActivity() {
 //                    findViewById<EditText>(R.id.textViewaddU).text.toString() != " "){
 
             var one = 0
-            var two = ""//findViewById<EditText>(R.id.editTextUserName).text.toString()
+            var two = username.toString()
             var three = exname
             var four = extime
 
-            var five = Exercise(two,three,four,one)
+            var five = Exercise(two, three, four, one)
 
             if (dbHelper.addExercise(five)) {
                 Toast.makeText(this, "Exercise added", Toast.LENGTH_SHORT).show()
@@ -38,5 +47,7 @@ class ExercisePage : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "Exercise not added", Toast.LENGTH_SHORT).show()
             }
+        }
     }
+
 }

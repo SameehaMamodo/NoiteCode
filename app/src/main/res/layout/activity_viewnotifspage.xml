@@ -7,24 +7,9 @@
     tools:context=".ViewNotifsPage">
 
     <TextView
-        android:id="@+id/txtReminderNotif"
-        android:layout_width="341dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="34dp"
-        android:layout_marginTop="568dp"
-        android:layout_marginEnd="34dp"
-        android:text="All Reminders"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/txtReminderTitle"
         android:layout_width="341dp"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="34dp"
         android:layout_marginTop="488dp"
         android:layout_marginEnd="34dp"
@@ -38,7 +23,7 @@
     <TextView
         android:id="@+id/txtMedTitle4"
         android:layout_width="341dp"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="34dp"
         android:layout_marginTop="140dp"
         android:layout_marginEnd="34dp"
@@ -52,41 +37,11 @@
     <TextView
         android:id="@+id/txtExerciseTitle"
         android:layout_width="341dp"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="34dp"
         android:layout_marginTop="312dp"
         android:layout_marginEnd="34dp"
         android:text="All Exercise"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/txtMedNotif"
-        android:layout_width="341dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="34dp"
-        android:layout_marginTop="216dp"
-        android:layout_marginEnd="34dp"
-        android:text="Medication Details"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/txtExerciseNotif"
-        android:layout_width="341dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="34dp"
-        android:layout_marginTop="396dp"
-        android:layout_marginEnd="34dp"
-        android:text="Exercise Details"
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -112,6 +67,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="153dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="153dp"
         android:layout_marginBottom="29dp"
         android:onClick="doneView"
@@ -119,5 +75,6 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtReminderTitle" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,12 +14,12 @@ private val ver : Int = 1
 
 class DatabaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,null ,ver) {
 
-//    User Table
+    //    User Table
     public val UserTableName ="UserTbl"
     public val User_ID = "Username"
     public val UserPassword ="Password"
 
-//    Medicine table
+    //    Medicine table
     public val MedicineTableName = "MedicineTbl"
     public val mUser ="User"
     public val mName = "MedicineName"
@@ -62,7 +62,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
 
             sqlCreateStatement = "CREATE TABLE " + ExerciseTableName +
                     " ( "+ eUser + " TEXT , " + eName + " TEXT NOT NULL , " +
-                    eTime + " TEXT NOT NULL   " + e_ID + "INTEGER NOT NULL   )"
+                    eTime + " TEXT NOT NULL   " + e_ID + "INTEGER NOT NULL )"
 
             db?.execSQL(sqlCreateStatement)
 
@@ -96,7 +96,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
         cv.put(UserPassword, userPassword.Password)
 
         val success = db.insert(UserTableName, null, cv)
-      //  db.close()
+        db.close()
         return success != -1L
     }
 
@@ -132,12 +132,13 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
         val db: SQLiteDatabase = this.writableDatabase
         val cv: ContentValues = ContentValues()
 
+        cv.put(mUser, userMedicine.User)
         cv.put(mName, userMedicine.MedicineName)
         cv.put(mTime, userMedicine.MedicineTime)
         cv.put(mDose, userMedicine.MedicineDose)
 
         val success = db.insert(MedicineTableName, null, cv)
-       // db.close()
+        db.close()
         return success != -1L
     }
 
@@ -145,11 +146,12 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
         val db: SQLiteDatabase = this.writableDatabase
         val cv: ContentValues = ContentValues()
 
+        cv.put(eUser, userExercise.Username)
         cv.put(eName, userExercise.ExerciseName)
         cv.put(eTime, userExercise.ExerciseTime)
 
         val success = db.insert(ExerciseTableName, null, cv)
-        //  db.close()
+        db.close()
         return success != -1L
     }
 
@@ -157,11 +159,12 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
         val db: SQLiteDatabase = this.writableDatabase
         val cv: ContentValues = ContentValues()
 
+        cv.put(rUser, userReminder.Username)
         cv.put(rName, userReminder.ReminderName)
         cv.put(rTime, userReminder.ReminderTime)
 
         val success = db.insert(ReminderTableName, null, cv)
-        //  db.close()
+        db.close()
         return success != -1L
     }
 
@@ -176,6 +179,124 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
         return success != -1L
     }
 
+    fun getAllMedicine(): ArrayList<Medicine> {
 
+        val medicineList = ArrayList<Medicine>()
+        val db: SQLiteDatabase = this.readableDatabase
+        val sqlStatement = "SELECT * FROM $MedicineTableName"
+        //WHERE $mUser == $s"
+
+        val cursor: Cursor = db.rawQuery(sqlStatement, null)
+        if (cursor.moveToFirst())
+            do {
+                val user: String = cursor.getString(0)
+                val med: String = cursor.getString(1)
+                val medT: String = cursor.getString(2)
+                val medD: Int = cursor.getInt(3)
+                val medId: Int = cursor.getInt(4)
+
+                val m = Medicine(user, med, medT,medD,medId)
+
+                medicineList.add(m)
+            } while (cursor.moveToNext())
+            cursor.close()
+        db.close()
+
+        return medicineList
+    }
+
+    fun getAllExercise(): ArrayList<Exercise> {
+
+        val exerciseList = ArrayList<Exercise>()
+        val db: SQLiteDatabase = this.readableDatabase
+        val sqlStatement = "SELECT * FROM $ExerciseTableName"
+
+        val cursor: Cursor = db.rawQuery(sqlStatement, null)
+        if (cursor.moveToFirst())
+            do {
+                val user: String = cursor.getString(0)
+                val xname: String = cursor.getString(1)
+                val xT: String = cursor.getString(2)
+                val xId: Int = cursor.getInt(3)
+
+                val x = Exercise(user, xname, xT, xId)
+                exerciseList.add(x)
+
+            } while (cursor.moveToNext())
+
+        cursor.close()
+        db.close()
+
+        return exerciseList
+    }
+
+    fun getAllReminders(): ArrayList<Reminder> {
+
+        val reminderList = ArrayList<Reminder>()
+        val db: SQLiteDatabase = this.readableDatabase
+        val sqlStatement = "SELECT * FROM $ReminderTableName"
+
+        val cursor: Cursor = db.rawQuery(sqlStatement, null)
+        if (cursor.moveToFirst())
+            do {
+                val user: String = cursor.getString(0)
+                val rname: String = cursor.getString(1)
+                val rT: String = cursor.getString(2)
+                val rId: Int = cursor.getInt(3)
+
+                val x = Reminder(user, rname, rT, rId)
+                reminderList.add(x)
+
+            } while (cursor.moveToNext())
+
+        cursor.close()
+        db.close()
+
+        return reminderList
+    }
+
+    fun getAllUser(): ArrayList<User> {
+
+        val userList = ArrayList<User>()
+        val db: SQLiteDatabase = this.readableDatabase
+        val sqlStatement = "SELECT * FROM $MedicineTableName"
+
+        val cursor: Cursor = db.rawQuery(sqlStatement, null)
+        if (cursor.moveToFirst())
+            do {
+                val user: String = cursor.getString(0)
+                val password: String = cursor.getString(1)
+
+                val m = User(user, password)
+
+                userList.add(m)
+            } while (cursor.moveToNext())
+        cursor.close()
+        db.close()
+
+        return userList
+    }
+    fun getLastUser(): ArrayList<TempUser> {
+
+        val userList = ArrayList<TempUser>()
+        val db: SQLiteDatabase = this.readableDatabase
+        val sqlStatement = "SELECT *FROM $TempUserTableName"
+
+        val cursor: Cursor = db.rawQuery(sqlStatement, null)
+        if (cursor.moveToFirst())
+            do {
+                val user: String = cursor.getString(0)
+                val number: Int = cursor.getInt(1)
+
+                val m = TempUser(user, number)
+
+                userList.add(m)
+            } while (cursor.moveToNext())
+        cursor.close()
+        db.close()
+
+        return userList
+    }
 
 }
+

@@ -16,6 +16,12 @@ class ReminderPage : AppCompatActivity() {
     }
 
     fun saveReminder(view: View) {
+
+        val extras: Bundle? = intent.extras
+        if (extras != null) {
+
+            val username = getIntent().getStringExtra("username3")
+
 //        val intent = Intent(this, HomePage::class.java)
 //        when {
 //            findViewById<EditText>(R.id.textViewAddNN).text.toString() == "" -> {
@@ -26,26 +32,28 @@ class ReminderPage : AppCompatActivity() {
 //            }
 //            else -> startActivity(intent)
 //        }
-        val dbHelper = DatabaseHelper(this)
+            val dbHelper = DatabaseHelper(this)
 
-        val rname = findViewById<EditText>(R.id.textViewAddNN).text.toString()
-        val rtime = findViewById<EditText>(R.id.textViewAddNT).text.toString()
+            val rname = findViewById<EditText>(R.id.textViewAddNN).text.toString()
+            val rtime = findViewById<EditText>(R.id.textViewAddNT).text.toString()
 
 //            if(findViewById<EditText>(R.id.editTextUserName).text.toString() != "" ||
 //                    findViewById<EditText>(R.id.textViewaddU).text.toString() != " "){
 
-        var one = 0
-        var two = ""//findViewById<EditText>(R.id.editTextUserName).text.toString()
-        var three = rname
-        var four = rtime
+            var one = 0
+            var two = username.toString()
+            var three = rname
+            var four = rtime
 
-        var five = Reminder(two,three,four,one)
+            var five = Reminder(two, three, four, one)
 
-        if (dbHelper.addReminder(five)) {
-            Toast.makeText(this, "Reminder added", Toast.LENGTH_SHORT).show()
-            startActivity(Intent(this, HomePage::class.java))
-        } else {
-            Toast.makeText(this, "Reminder not added", Toast.LENGTH_SHORT).show()
+            if (dbHelper.addReminder(five)) {
+                Toast.makeText(this, "Reminder added", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, HomePage::class.java))
+            } else {
+                Toast.makeText(this, "Reminder not added", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }
+
