@@ -6,6 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".HomePage">
 
+    <ImageView
+        android:src="@drawable/lightdark_bg"
+        android:id="@+id/im1"
+        android:scaleType="fitXY"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"/>
+
     <Button
         android:id="@+id/btnNotification2"
         android:layout_width="160dp"
@@ -24,7 +31,7 @@
         android:layout_width="160dp"
         android:layout_height="145dp"
         android:layout_marginStart="35dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="8dp"
         android:onClick="AddMedication"
         android:text="Add Medication"
@@ -50,7 +57,7 @@
         android:layout_width="160dp"
         android:layout_height="145dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="35dp"
         android:onClick="AddExercise"
         android:text="Add Exercise"
@@ -68,6 +75,7 @@
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="24dp"
         android:text="Home"
+        android:textColor="@color/white"
         android:textAlignment="center"
         android:textSize="48sp"
         app:layout_constraintBottom_toTopOf="@+id/btnMedication"
@@ -82,6 +90,7 @@
         android:layout_marginStart="35dp"
         android:layout_marginBottom="5dp"
         android:text="User"
+        android:textColor="@color/purple_500"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnNotification2" />

@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.noitecode.model.Exercise
@@ -25,6 +26,11 @@ class ExercisePage : AppCompatActivity() {
 
             val username = getIntent().getStringExtra("username2")
 
+//        var db = DatabaseHelper(this)
+//        var uno = db.getLastUser().last().Username.//.size.get(0)//.Username.toString()
+//       var abc = uno.toString()
+
+            // findViewById<TextView>(R.id.txtViewUser).text = "Hi ${uno.Username}"
 
             val dbHelper = DatabaseHelper(this)
 
@@ -35,7 +41,7 @@ class ExercisePage : AppCompatActivity() {
 //                    findViewById<EditText>(R.id.textViewaddU).text.toString() != " "){
 
             var one = 0
-            var two = username.toString()
+            var two = username.toString() //username.toString()
             var three = exname
             var four = extime
 
@@ -46,6 +52,7 @@ class ExercisePage : AppCompatActivity() {
                 startActivity(Intent(this, HomePage::class.java))
             } else {
                 Toast.makeText(this, "Exercise not added", Toast.LENGTH_SHORT).show()
+                //  }
             }
         }
     }
