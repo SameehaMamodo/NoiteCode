@@ -62,13 +62,15 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
 
             sqlCreateStatement = "CREATE TABLE " + ExerciseTableName +
                     " ( "+ eUser + " TEXT , " + eName + " TEXT NOT NULL , " +
-                    eTime + " TEXT NOT NULL   " + e_ID + "INTEGER NOT NULL )"
+                    eTime + " TEXT NOT NULL   " + e_ID + " INTEGER PRIMARY KEY AUTOINCREMENT )"
+
+
 
             db?.execSQL(sqlCreateStatement)
 
             sqlCreateStatement = "CREATE TABLE " + ReminderTableName +
                     " ( " + rUser + " TEXT , " + rName + " TEXT NOT NULL , " +
-                    rTime + " TEXT NOT NULL" +  r_ID + " INTEGER)"
+                    rTime + " TEXT NOT NULL ," +  r_ID + " INTEGER)"
 
             db?.execSQL(sqlCreateStatement)
 
@@ -296,6 +298,11 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
         db.close()
 
         return userList
+    }
+
+    fun clearTempUser(){
+        val db: SQLiteDatabase = this.writableDatabase
+        db.delete(TempUserTableName, null, null)
     }
 
 }

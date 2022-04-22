@@ -1,4 +1,3 @@
-
 package com.example.noitecode
 
 import DatabaseHelper
@@ -21,76 +20,43 @@ class HomePage : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_homepage)
 
+
+
 //        findViewById<EditText>(R.id.editTextUserName).getText()
 //        findViewById<EditText>(R.id.editTextTextPassword).getText()
 
-  //      findViewById<TextView>(R.id.txtViewUser).text = findViewById<EditText>(R.id.editTextUserName).getText()
+        //      findViewById<TextView>(R.id.txtViewUser).text = findViewById<EditText>(R.id.editTextUserName).getText()
 
         var db = DatabaseHelper(this)
         var uno = db.getLastUser().last()
 
         findViewById<TextView>(R.id.txtViewUser).text = "Hi ${uno.Username}"
 
-        val extras: Bundle? = intent.extras
-        if (extras != null) {
-
-            val username = getIntent().getStringExtra("username4")
-
-//            intent.putExtra("username1", username)
-//            startActivity(intent)
-        }
-
-        }
+    }
 
 
 
     fun AddMedication(view: View) {
 
-        val extras: Bundle? = intent.extras
-        if(extras != null){
-            val username = extras.getString("username")
-
-            val intent = Intent(this, MedicationPage::class.java)
-            intent.putExtra("username1", username)
-            startActivity(intent)
-        }
+        val intent = Intent(this, MedicationPage::class.java)
+        startActivity(intent)
 
     }
 
     fun AddExercise(view: View) {
 
-        val extras: Bundle? = intent.extras
-        if(extras != null){
-            val username = extras.getString("username")
-
-            val intent = Intent(this, ExercisePage::class.java)
-            intent.putExtra("username2", username)
-            startActivity(intent)
-        }
+        val intent = Intent(this, ExercisePage::class.java)
+        startActivity(intent)
     }
 
-
     fun AddReminder(view: View) {
-        val extras: Bundle? = intent.extras
-        if(extras != null){
-            val username = extras.getString("username")
-
-            val intent = Intent(this, ReminderPage::class.java)
-            intent.putExtra("username3", username)
-            startActivity(intent)
-        }
+        val intent = Intent(this, ReminderPage::class.java)
+        startActivity(intent)
     }
 
     fun ViewReminder(view: View) {
-        val extras: Bundle? = intent.extras
+        val intent = Intent(this, ViewNotifsPage::class.java)
+        startActivity(intent)
 
-        if(extras != null) {
-            val intent = Intent(this, ViewNotifsPage::class.java)
-            val username = extras.getString("username")
-
-            intent.putExtra("username4", username)
-            startActivity(intent)
-
-        }
     }
 }

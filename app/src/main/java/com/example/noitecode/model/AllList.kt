@@ -35,6 +35,7 @@ class AllList(context: Context) {
     fun getTempUserList(): ArrayList<TempUser>{
         return tempUserList
     }
+
     fun get_userList(): ArrayList<User> {
         return userList
     }

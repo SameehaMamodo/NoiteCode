@@ -35,15 +35,18 @@ class ViewNotifsPage : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_viewnotifspage)
 
-            val extras: Bundle? = intent.extras
-            if (extras != null) {
+//            val extras: Bundle? = intent.extras
+//            if (extras != null) {
 
-                val username = getIntent().getStringExtra("username4")
+              //  val username = getIntent().getStringExtra("username4")
 
                 allList = AllList(this)
                 dbHelper = DatabaseHelper(this)
 
-                myMedicineList = allList.get_medicineList()
+        val username = allList.getTempUserList().last().Username
+
+
+            myMedicineList = allList.get_medicineList()
                 topic1 = ArrayList()
                 uno = ArrayList()
 
@@ -104,18 +107,18 @@ class ViewNotifsPage : AppCompatActivity() {
                 var u = ("Reminder Name: " + four + "\nReminder Time: " + five)
 
                 findViewById<TextView>(R.id.txtReminderTitle).text = u
-            }
+        //    }
         }
         fun doneView(view: View) {
-            val extras: Bundle? = intent.extras
+         //   val extras: Bundle? = intent.extras
 
-            if (extras != null) {
+          //  if (extras != null) {
                 val intent = Intent(this, HomePage::class.java)
-                val username = extras.getString("username")
+              //  val username = extras.getString("username")
 
-                intent.putExtra("username4", username)
+            //    intent.putExtra("username4", username)
                 startActivity(intent)
-            }
+       //     }
 //            val intent = Intent(this, HomePage::class.java)
 //            startActivity(intent)
         }
