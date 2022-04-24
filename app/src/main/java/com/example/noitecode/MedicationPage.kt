@@ -110,8 +110,7 @@ class MedicationPage : AppCompatActivity() {
             val intent = Intent(this, HomePage::class.java)
             startActivity(intent)
             val intent1 = Intent(this, MedicineBroadcast::class.java)
-            val pendingIntent =
-                PendingIntent.getBroadcast(this, 0, intent1, PendingIntent.FLAG_IMMUTABLE)
+            val pendingIntent = PendingIntent.getBroadcast(this, 2, intent1, PendingIntent.FLAG_IMMUTABLE)
             val alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
             val timeAtButtonClick = System.currentTimeMillis()
             val timeFrame =

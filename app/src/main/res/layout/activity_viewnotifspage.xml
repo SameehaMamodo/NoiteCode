@@ -7,11 +7,13 @@
     tools:context=".ViewNotifsPage">
 
     <ImageView
-        android:src="@drawable/lightblue"
         android:id="@+id/im1"
-        android:scaleType="fitXY"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_width="match_parent"/>
+        android:scaleType="fitXY"
+        android:src="@drawable/lightblue"
+        tools:layout_editor_absoluteX="60dp"
+        tools:layout_editor_absoluteY="0dp" />
 
     <TextView
         android:id="@+id/txtReminderTitle"
@@ -82,6 +84,50 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtReminderTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/txtReminderTitle"
+        app:layout_constraintVertical_bias="0.965" />
+
+    <Button
+        android:id="@+id/btn_deleteM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginBottom="45dp"
+        android:onClick="cancelMedicineNotification"
+        android:text="Delete Medication"
+        app:layout_constraintBottom_toTopOf="@+id/txtExerciseTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtMedTitle4"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/btn_deleteE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="152dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginBottom="45dp"
+        android:onClick="cancelExerciseNotification"
+        android:text="Delete Exercise"
+        app:layout_constraintBottom_toTopOf="@+id/txtReminderTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtExerciseTitle"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/btn_deleteR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="152dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginBottom="59dp"
+        android:onClick="cancelReminderNotification"
+        android:text="Delete Reminder"
+        app:layout_constraintBottom_toTopOf="@+id/button5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtReminderTitle"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -61,10 +61,10 @@ class   ExercisePage : AppCompatActivity() {
             Toast.makeText(this, "Exercise added", Toast.LENGTH_SHORT).show()
             startActivity(Intent(this, HomePage::class.java))
             val intent = Intent(this, ExerciseBroadcast::class.java)
-            val pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
+            val pendingIntent = PendingIntent.getBroadcast(this, 1, intent, PendingIntent.FLAG_IMMUTABLE)
             val alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
             val timeAtButtonClick = System.currentTimeMillis()
-            val timeFrame = (dbHelper.getAllExercise().last().ExerciseTime.toInt() * 1000).toLong()
+            val timeFrame = (dbHelper.getAllExercise().last().ExerciseTime.toInt() * 6000).toLong()
             alarmManager[AlarmManager.RTC_WAKEUP, timeAtButtonClick + timeFrame] = pendingIntent
 
         }

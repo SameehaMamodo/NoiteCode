@@ -1,6 +1,8 @@
 package com.example.noitecode
 
 import DatabaseHelper
+import android.app.AlarmManager
+import android.app.PendingIntent
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -109,7 +111,46 @@ class ViewNotifsPage : AppCompatActivity() {
                 findViewById<TextView>(R.id.txtReminderTitle).text = u
         //    }
         }
-        fun doneView(view: View) {
+    fun cancelExerciseNotification(view: View) {
+        val intent = Intent(this, ExerciseBroadcast::class.java)
+        val am = getSystemService(ALARM_SERVICE) as AlarmManager
+        val pendingIntent = PendingIntent.getBroadcast(this, 1, intent, PendingIntent.FLAG_IMMUTABLE)
+        pendingIntent.cancel()
+        am.cancel(pendingIntent)
+        var b = allList.get_exerciseList().last()
+        if (b.Username == allList.getTempUserList().last().Username){
+            dbHelper.deleteLastExercise()
+        }
+    }
+    fun cancelMedicineNotification(view: View) {
+        val intent = Intent(this, MedicineBroadcast::class.java)
+        val am = getSystemService(ALARM_SERVICE) as AlarmManager
+        val pendingIntent =
+            PendingIntent.getBroadcast(this, 2, intent, PendingIntent.FLAG_IMMUTABLE)
+        pendingIntent.cancel()
+        am.cancel(pendingIntent)
+        var b = allList.get_medicineList().last()
+        if (b.User == allList.getTempUserList().last().Username) {
+            dbHelper.deleteLastMedication()
+        }
+    }
+    fun cancelReminderNotification(view: View) {
+        val intent = Intent(this, ReminderBroadcast::class.java)
+        val am = getSystemService(ALARM_SERVICE) as AlarmManager
+        val pendingIntent =
+            PendingIntent.getBroadcast(this, 3, intent, PendingIntent.FLAG_IMMUTABLE)
+        pendingIntent.cancel()
+        am.cancel(pendingIntent)
+        var b = allList.get_reminderList().last()
+        if (b.Username == allList.getTempUserList().last().Username) {
+            dbHelper.deleteLastReminder()
+        }
+    }
+
+
+
+
+    fun doneView(view: View) {
          //   val extras: Bundle? = intent.extras
 
           //  if (extras != null) {
@@ -123,3 +164,4 @@ class ViewNotifsPage : AppCompatActivity() {
 //            startActivity(intent)
         }
     }
+

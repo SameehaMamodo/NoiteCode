@@ -305,5 +305,20 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
         db.delete(TempUserTableName, null, null)
     }
 
+    fun deleteLastExercise(){
+        val db: SQLiteDatabase = this.writableDatabase
+        db.execSQL("DELETE FROM $ExerciseTableName WHERE $e_ID = (SELECT MAX($e_ID) FROM $ExerciseTableName)")
+    }
+
+    fun deleteLastMedication(){
+        val db: SQLiteDatabase = this.writableDatabase
+        db.execSQL("DELETE FROM $MedicineTableName WHERE $m_ID = (SELECT MAX($m_ID) FROM $MedicineTableName)")
+    }
+
+    fun deleteLastReminder(){
+        val db: SQLiteDatabase = this.writableDatabase
+        db.execSQL("DELETE FROM $ReminderTableName WHERE $r_ID = (SELECT MAX($r_ID) FROM $ReminderTableName)")
+    }
+
 }
 
