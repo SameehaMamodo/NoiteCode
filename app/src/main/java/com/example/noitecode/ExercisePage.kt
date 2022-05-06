@@ -22,23 +22,15 @@ class   ExercisePage : AppCompatActivity() {
         setContentView(R.layout.activity_exercisepage)
         createChannelNotification()
 
-        //  findViewById<EditText>(R.id.editTxtETime)
     }
 
     fun saveExercise(view: View) {
-//        var db = DatabaseHelper(this)
-//        var uno = db.getLastUser().last().Username.//.size.get(0)//.Username.toString()
-//       var abc = uno.toString()
-
-        // findViewById<TextView>(R.id.txtViewUser).text = "Hi ${uno.Username}"
 
         val dbHelper = DatabaseHelper(this)
 
         val exname = findViewById<EditText>(R.id.textViewAddEN).text.toString()
         val extime = findViewById<EditText>(R.id.editTxtETime).text.toString()
 
-//            if(findViewById<EditText>(R.id.editTextUserName).text.toString() != "" ||
-//                    findViewById<EditText>(R.id.textViewaddU).text.toString() != " "){
 
         var key = 0
         var user = dbHelper.getLastUser().last().Username

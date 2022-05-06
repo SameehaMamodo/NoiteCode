@@ -21,12 +21,6 @@ class HomePage : AppCompatActivity() {
         setContentView(R.layout.activity_homepage)
 
 
-
-//        findViewById<EditText>(R.id.editTextUserName).getText()
-//        findViewById<EditText>(R.id.editTextTextPassword).getText()
-
-        //      findViewById<TextView>(R.id.txtViewUser).text = findViewById<EditText>(R.id.editTextUserName).getText()
-
         var db = DatabaseHelper(this)
         var uno = db.getLastUser().last()
 
