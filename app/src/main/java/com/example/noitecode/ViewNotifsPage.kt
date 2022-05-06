@@ -19,12 +19,10 @@ class ViewNotifsPage : AppCompatActivity() {
     lateinit var myMedicineList: ArrayList<Medicine>
     lateinit var topic1: ArrayList<Medicine>
     lateinit var uno: ArrayList<Medicine>
-    lateinit var dos: ArrayList<Medicine>
 
     lateinit var myExerciseList: ArrayList<Exercise>
     lateinit var topic2: ArrayList<Exercise>
     lateinit var tres: ArrayList<Exercise>
-    lateinit var cuatro : ArrayList<Exercise>
 
     lateinit var myReminderList: ArrayList<Reminder>
     lateinit var topic3: ArrayList<Reminder>
@@ -36,11 +34,6 @@ class ViewNotifsPage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_viewnotifspage)
-
-//            val extras: Bundle? = intent.extras
-//            if (extras != null) {
-
-              //  val username = getIntent().getStringExtra("username4")
 
                 allList = AllList(this)
                 dbHelper = DatabaseHelper(this)
@@ -58,13 +51,13 @@ class ViewNotifsPage : AppCompatActivity() {
                     }
                 }
 
-                var a = topic1.get(0)
+                var a = topic1.last()
                 if (a.User == username)
                     uno.add(a)
 
-                var one = uno.get(0).MedicineName
-                var two = uno.get(0).MedicineTime
-                var three = uno.get(0).MedicineDose
+                var one = uno.last().MedicineName
+                var two = uno.last().MedicineTime
+                var three = uno.last().MedicineDose
                 var s = ("Medicine Name: " + one + "\nMedcine Time: " + two + "\nMedicine Dose: " + three)
 
 
@@ -80,12 +73,12 @@ class ViewNotifsPage : AppCompatActivity() {
                     }
                 }
 
-                var b = topic2.get(0)
+                var b = topic2.last()
                 if (b.Username == username)
                     tres.add(b)
 
-                var four = tres.get(0).ExerciseName
-                var five = tres.get(0).ExerciseTime
+                var four = tres.last().ExerciseName
+                var five = tres.last().ExerciseTime
                 var t = ("Exercise Name: " + four + "\nExercise Time: " + five)
 
                 findViewById<TextView>(R.id.txtExerciseTitle).text = t
@@ -100,13 +93,13 @@ class ViewNotifsPage : AppCompatActivity() {
                     }
                 }
 
-                var c = topic3.get(0)
+                var c = topic3.last()
                 if (c.Username == username)
                     cinco.add(c)
 
-                var six = cinco.get(0).ReminderName
-                var seven = cinco.get(0).ReminderTime
-                var u = ("Reminder Name: " + four + "\nReminder Time: " + five)
+                var six = cinco.last().ReminderName
+                var seven = cinco.last().ReminderTime
+                var u = ("Reminder Name: " + six + "\nReminder Time: " + seven)
 
                 findViewById<TextView>(R.id.txtReminderTitle).text = u
         //    }
@@ -148,20 +141,9 @@ class ViewNotifsPage : AppCompatActivity() {
     }
 
 
-
-
     fun doneView(view: View) {
-         //   val extras: Bundle? = intent.extras
-
-          //  if (extras != null) {
                 val intent = Intent(this, HomePage::class.java)
-              //  val username = extras.getString("username")
-
-            //    intent.putExtra("username4", username)
                 startActivity(intent)
-       //     }
-//            val intent = Intent(this, HomePage::class.java)
-//            startActivity(intent)
         }
     }
 

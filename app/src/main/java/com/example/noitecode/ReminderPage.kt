@@ -56,7 +56,7 @@ class ReminderPage : AppCompatActivity() {
             val pendingIntent = PendingIntent.getBroadcast(this, 3, intent, PendingIntent.FLAG_IMMUTABLE)
             val alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
             val timeAtButtonClick = System.currentTimeMillis()
-            val timeFrame = (dbHelper.getAllReminders().last().ReminderTime.toInt() * 6000).toLong()
+            val timeFrame = (dbHelper.getAllReminders().last().ReminderTime.toInt() * 60000).toLong()
             alarmManager[AlarmManager.RTC_WAKEUP, timeAtButtonClick + timeFrame] = pendingIntent
 
         }
@@ -66,7 +66,7 @@ class ReminderPage : AppCompatActivity() {
 
     private fun createChannelNotification() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val name: CharSequence = "NoiteReminder"
+            val name: CharSequence = "Noite Reminder"
             val description = "Channel for Noite Reminder"
             val importance = NotificationManager.IMPORTANCE_HIGH
             val channel = NotificationChannel("noitecode2", name, importance)

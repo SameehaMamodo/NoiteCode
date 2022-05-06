@@ -40,10 +40,10 @@ class   ExercisePage : AppCompatActivity() {
 //            if(findViewById<EditText>(R.id.editTextUserName).text.toString() != "" ||
 //                    findViewById<EditText>(R.id.textViewaddU).text.toString() != " "){
 
-        var one = 0
-        var two = dbHelper.getLastUser().last().Username //username.toString()
-        var three = exname
-        var four = extime
+        var key = 0
+        var user = dbHelper.getLastUser().last().Username
+        var name = exname
+        var timer = extime
 
 
 
@@ -56,26 +56,23 @@ class   ExercisePage : AppCompatActivity() {
         }
 
         else{
-            var five = Exercise(two, three, four, one)
-            dbHelper.addExercise(five)
+            var e = Exercise(user, name, timer, key)
+            dbHelper.addExercise(e)
             Toast.makeText(this, "Exercise added", Toast.LENGTH_SHORT).show()
             startActivity(Intent(this, HomePage::class.java))
             val intent = Intent(this, ExerciseBroadcast::class.java)
             val pendingIntent = PendingIntent.getBroadcast(this, 1, intent, PendingIntent.FLAG_IMMUTABLE)
             val alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
             val timeAtButtonClick = System.currentTimeMillis()
-            val timeFrame = (dbHelper.getAllExercise().last().ExerciseTime.toInt() * 6000).toLong()
+            val timeFrame = (dbHelper.getAllExercise().last().ExerciseTime.toInt() * 60000).toLong()
             alarmManager[AlarmManager.RTC_WAKEUP, timeAtButtonClick + timeFrame] = pendingIntent
 
         }
-
-
     }
-
 
     private fun createChannelNotification() {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val name: CharSequence = "NoiteReminder"
+            val name: CharSequence = "Noite Exercise"
             val description = "Channel for Noite Reminder"
             val importance = NotificationManager.IMPORTANCE_HIGH
             val channel = NotificationChannel("noitecode", name, importance)

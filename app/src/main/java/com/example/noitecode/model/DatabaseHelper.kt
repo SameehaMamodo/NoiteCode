@@ -90,31 +90,31 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
     }
 
 
-    fun addUserPass(userPassword: User): Boolean {
+    fun addUser(user: User): Boolean {
         val db: SQLiteDatabase = this.writableDatabase
         val cv: ContentValues = ContentValues()
 
-        cv.put(User_ID, userPassword.Username)
-        cv.put(UserPassword, userPassword.Password)
+        cv.put(User_ID, user.Username)
+        cv.put(UserPassword, user.Password)
 
         val success = db.insert(UserTableName, null, cv)
         db.close()
         return success != -1L
     }
 
-    fun ifNameExists(name: String): Boolean {
+    fun ifUserExists(name: String): Boolean {
         val db: SQLiteDatabase = this.readableDatabase
-        var bool = false
+        var a = false
         val whereClause = "$User_ID=?"
         val whereArgs: String = name
         val cursor: Cursor = db.query(UserTableName,null,whereClause,
             arrayOf(whereArgs),null,null, null)
 
         if (cursor.count > 0) {
-            bool = true;
+            a = true;
         }
         cursor.close()
-        return bool
+        return a
     }
 
     fun login(username: String, password: String): Boolean {
@@ -307,7 +307,8 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
 
     fun deleteLastExercise(){
         val db: SQLiteDatabase = this.writableDatabase
-        db.execSQL("DELETE FROM $ExerciseTableName WHERE $e_ID = (SELECT MAX($e_ID) FROM $ExerciseTableName)")
+        db.execSQL("DELETE FROM $ExerciseTableName " +
+                "WHERE $e_ID = (SELECT MAX($e_ID) FROM $ExerciseTableName)")
     }
 
     fun deleteLastMedication(){

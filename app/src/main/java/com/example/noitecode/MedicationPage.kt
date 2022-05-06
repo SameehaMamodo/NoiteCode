@@ -16,38 +16,20 @@ class MedicationPage : AppCompatActivity() {
 
     private val CHANNEL_ID = "channel_id_example_01"
     private val notificationId = 101
-    // private val btn_button = findViewById<Button>(R.id.btn_button)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_medicationpage)
 
         createChannelNotification()
-//        btn_button.setOnClickListener {
-//            sendNotification()
-//        }
 
     }
-
-    /*private fun createNotificationChannel(){
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-            val name = "Notification Title"
-            val descriptionText = "Notification Description"
-            val importance = NotificationManager.IMPORTANCE_DEFAULT
-            val channel = NotificationChannel(CHANNEL_ID, name,importance).apply {
-                description = descriptionText
-            }
-            val notificationManager: NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-            notificationManager.createNotificationChannel(channel)
-        }
-    }*/
-
 
     private fun createChannelNotification() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
             val name: CharSequence = "NoiteReminder"
-            val description = "Channel for Noite Reminder"
+            val description = "Channel for Noite Medication"
             val importance = NotificationManager.IMPORTANCE_HIGH
             val channel = NotificationChannel("noitecode1", name, importance)
             channel.description = description
@@ -58,19 +40,6 @@ class MedicationPage : AppCompatActivity() {
         }
     }
 
-    //private
-    /*fun sendNotification(){
-
-        val builder = NotificationCompat.Builder(this, CHANNEL_ID)
-            .setSmallIcon(R.drawable.noitelogo)
-            .setContentTitle("Example Title")
-            .setContentText("Example Description")
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-        with(NotificationManagerCompat.from(this)){
-            notify(notificationId, builder.build())
-        }
-    }*/
-
 
     fun saveMedication(view: View) {
 
@@ -80,16 +49,11 @@ class MedicationPage : AppCompatActivity() {
         val medtime = findViewById<EditText>(R.id.editTextMedTime).text.toString()
         val meddose = findViewById<EditText>(R.id.editTextMedDose).text.toString()
 
-//            if(findViewById<EditText>(R.id.editTextUserName).text.toString() != "" ||
-//                    findViewById<EditText>(R.id.textViewaddU).text.toString() != " "){
-
         var uno = dbHelper.getLastUser().last().Username
         var two = medname
         var three = medtime
         var four = if(meddose == "") 0 else meddose.toInt()
         var five = 0
-
-
 
 
         if (medname.isEmpty()) {
